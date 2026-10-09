@@ -147,13 +147,13 @@
       backdrop-filter: blur(10px);
     }
 
-    /* БЛОК ЧАТА */
+    /* БЛОК ЧАТА С СООБЩЕНИЕМ ОБ ОБСЛУЖИВАНИИ */
     .chat-box {
       background: rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
-      padding: 15px;
-      text-align: left;
+      padding: 20px 15px;
+      text-align: center;
     }
 
     .chat-title {
@@ -161,60 +161,16 @@
       font-weight: 600;
       color: #a855f7;
       margin-bottom: 10px;
-      text-align: center;
     }
 
-    .chat-messages {
-      height: 140px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-right: 5px;
-      margin-bottom: 12px;
-    }
-
-    .chat-msg {
-      font-size: 0.8rem;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 8px 12px;
-      border-radius: 10px;
-      line-height: 1.4;
-      word-break: break-word;
-    }
-
-    .chat-msg .author {
-      font-weight: 600;
-      color: #6366f1;
-      margin-right: 6px;
-    }
-
-    .chat-inputs {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .chat-inputs input {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      padding: 8px 12px;
-      color: #fff;
-      font-size: 0.8rem;
-      outline: none;
-      font-family: inherit;
-    }
-
-    .chat-inputs button {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      border: none;
-      border-radius: 8px;
-      padding: 8px;
-      color: #fff;
-      font-weight: 600;
+    .chat-status {
       font-size: 0.85rem;
-      cursor: pointer;
+      color: #94a3b8;
+      line-height: 1.5;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      padding: 12px;
     }
   </style>
 </head>
@@ -228,6 +184,7 @@
   </button>
 
   <audio id="bgMusic" loop>
+    <!-- Вставьте вашу ссылку на музыку в src ниже -->
     <source src="https://mp3tourl.com/audio/1791550200566-a0a4e73c-24c7-4209-a812-b6cb3fa5af61.m4a" type="audio/mpeg">
   </audio>
 
@@ -235,7 +192,7 @@
     <div class="loader"></div>
     <div class="book-title">«Собрать по частям» — Andersen</div>
     <h1>Технические работы</h1>
-    <p>Сайт книги находится в процессе настройки. Делитесь ожиданиями в чате ниже!</p>
+    <p>Сайт книги находится в процессе настройки. Скоро здесь появятся новые главы!</p>
 
     <div class="timer">
       <div class="timer-block"><span class="timer-val" id="days">00</span><span class="timer-lbl">Дней</span></div>
@@ -244,24 +201,17 @@
       <div class="timer-block"><span class="timer-val" id="seconds">00</span><span class="timer-lbl">Сек</span></div>
     </div>
 
-    <!-- Встроенный чат -->
+    <!-- Блок статуса чата -->
     <div class="chat-box">
-      <div class="chat-title">💬 Чат ожидания</div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg"><span class="author">Andersen:</span>Добро пожаловать! Скоро здесь появятся новые главы.</div>
-      </div>
-      <div class="chat-inputs">
-        <input type="text" id="usernameInput" placeholder="Ваше имя / ник" value="Читатель">
-        <div style="display:flex; gap:6px;">
-          <input type="text" id="messageInput" placeholder="Напишите сообщение..." style="flex:1;">
-          <button onclick="sendMessage()">Отправить</button>
-        </div>
+      <div class="chat-title">💬 Онлайн-чат</div>
+      <div class="chat-status">
+        🔧 Чат временно недоступен — проводим техническое обслуживание. Скоро всё исправим и вернем возможность общаться!
       </div>
     </div>
   </div>
 
   <script>
-    // Таймер
+    // Настройка таймера
     const targetDate = new Date("2026-10-15T18:00:00").getTime();
 
     function updateTimer() {
@@ -287,7 +237,7 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Музыка
+    // Настройка музыки
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
 
@@ -298,25 +248,6 @@
       } else {
         music.pause();
         btn.innerText = "🎵 Включить музыку";
-      }
-    }
-
-    // Отправка сообщений в чат
-    function sendMessage() {
-      const nameInput = document.getElementById('usernameInput');
-      const msgInput = document.getElementById('messageInput');
-      const chatBox = document.getElementById('chatMessages');
-
-      const name = nameInput.value.trim() || 'Аноним';
-      const text = msgInput.value.trim();
-
-      if (text !== "") {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = 'chat-msg';
-        msgDiv.innerHTML = `<span class="author">${name}:</span>${text}`;
-        chatBox.appendChild(msgDiv);
-        msgInput.value = "";
-        chatBox.scrollTop = chatBox.scrollHeight;
       }
     }
   </script>
