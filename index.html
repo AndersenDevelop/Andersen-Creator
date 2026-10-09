@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>«Собрать по частям» — Технические работы</title>
-  <!-- Подключаем красивый стильный шрифт с Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -27,11 +26,10 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* Фоновые декоративные свечения */
     .glow {
       position: absolute;
       width: 300px;
@@ -62,9 +60,9 @@
       border-radius: 24px;
       padding: 40px 24px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
     }
 
-    /* Анимация загрузки (неоновое кольцо) */
     .loader {
       width: 70px;
       height: 70px;
@@ -106,7 +104,6 @@
       margin-bottom: 30px;
     }
 
-    /* Таймер */
     .timer {
       display: flex;
       justify-content: center;
@@ -137,7 +134,6 @@
       margin-top: 2px;
     }
 
-    /* Кнопка управления музыкой */
     .audio-btn {
       position: fixed;
       top: 20px;
@@ -167,49 +163,37 @@
   <div class="glow glow-1"></div>
   <div class="glow glow-2"></div>
 
-  <!-- Кнопка музыки -->
   <button class="audio-btn" id="musicBtn" onclick="toggleMusic()">
     🎵 Включить музыку
   </button>
 
-  <!-- Тег аудиоплеера (ссылка на фоновую музыку) -->
   <audio id="bgMusic" loop>
-    <!-- Замените ссылку ниже на любую свою прямую ссылку на mp3 файл -->
-    <source src="https://mp3tourl.com/audio/1791550200566-a0a4e73c-24c7-4209-a812-b6cb3fa5af61.m4a" type="audio/mpeg">
+    <!-- Ваша ссылка на музыку останется здесь -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-piano-amp-strings-10711.mp3" type="audio/mpeg">
   </audio>
 
   <div class="container">
     <div class="loader"></div>
     <div class="book-title">«Собрать по частям» — Andersen</div>
     <h1>Технические работы</h1>
-    <p>Сайт книги находится в процессе настройки и оформления. Скоро здесь появятся первые главы!</p>
+    <p>Сайт книги находится в процессе настройки. Общайтесь в чате ниже, пока идет отсчет!</p>
 
-    <!-- Блок обратного отсчета -->
     <div class="timer">
-      <div class="timer-block">
-        <span class="timer-val" id="days">00</span>
-        <span class="timer-lbl">Дней</span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-val" id="hours">00</span>
-        <span class="timer-lbl">Часов</span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-val" id="minutes">00</span>
-        <span class="timer-lbl">Мин</span>
-      </div>
-      <div class="timer-block">
-        <span class="timer-val" id="seconds">00</span>
-        <span class="timer-lbl">Сек</span>
-      </div>
+      <div class="timer-block"><span class="timer-val" id="days">00</span><span class="timer-lbl">Дней</span></div>
+      <div class="timer-block"><span class="timer-val" id="hours">00</span><span class="timer-lbl">Часов</span></div>
+      <div class="timer-block"><span class="timer-val" id="minutes">00</span><span class="timer-lbl">Мин</span></div>
+      <div class="timer-block"><span class="timer-val" id="seconds">00</span><span class="timer-lbl">Сек</span></div>
     </div>
   </div>
 
+  <!-- Подключение онлайн-чата Chatbro -->
+  <script id="chatBroEmbedCode">
+    /* Chatbro Widget Embed Code */
+    function ChatbroLoader(chats,src){var ii=chats.length;if (ii) {var c=chats[ii-1];c.id=src;c.container=c.container||'chatbro_container';var el=document.createElement('script');el.type='text/javascript';el.async=true;el.src='https://www.chatbro.com/embed.js';var ss=document.getElementsByTagName('script')[0];ss.parentNode.insertBefore(el,ss);}}
+    ChatbroLoader([], 'chatbro_code');
+  </script>
+
   <script>
-    // ========================================================
-    // НАСТРОЙКА ДАТЫ ЗАВЕРШЕНИЯ (Редактируйте строку ниже):
-    // Формат: "YYYY-MM-DDTHH:MM:SS" (Год-Месяц-День T Часы:Минуты:Секунды)
-    // ========================================================
     const targetDate = new Date("2026-10-15T18:00:00").getTime();
 
     function updateTimer() {
@@ -235,7 +219,6 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Управление музыкой
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
 
@@ -250,4 +233,4 @@
     }
   </script>
 </body>
-          </html>
+</html>
