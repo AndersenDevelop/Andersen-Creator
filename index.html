@@ -26,7 +26,6 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-      overflow-x: hidden;
       position: relative;
     }
 
@@ -51,26 +50,25 @@
     .container {
       position: relative;
       z-index: 2;
-      max-width: 600px;
+      max-width: 500px;
       width: 100%;
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 24px;
-      padding: 40px 24px;
+      padding: 30px 20px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-      margin-bottom: 20px;
     }
 
     .loader {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       border: 4px solid rgba(255, 255, 255, 0.1);
       border-left-color: #6366f1;
       border-right-color: #a855f7;
       border-radius: 50%;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
       animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
     }
 
@@ -80,7 +78,7 @@
     }
 
     .book-title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 3px;
       color: #a855f7;
@@ -89,7 +87,7 @@
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 800;
       margin-bottom: 12px;
       background: linear-gradient(to right, #ffffff, #cbd5e1);
@@ -98,36 +96,36 @@
     }
 
     p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #94a3b8;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      line-height: 1.5;
+      margin-bottom: 24px;
     }
 
     .timer {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 24px;
     }
 
     .timer-block {
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      padding: 12px;
-      min-width: 65px;
+      padding: 10px;
+      min-width: 60px;
     }
 
     .timer-val {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: #f1f5f9;
       display: block;
     }
 
     .timer-lbl {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       color: #64748b;
       letter-spacing: 1px;
@@ -147,14 +145,76 @@
       font-size: 0.85rem;
       cursor: pointer;
       backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
     }
 
-    .audio-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
+    /* БЛОК ЧАТА */
+    .chat-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .chat-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #a855f7;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .chat-messages {
+      height: 140px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 5px;
+      margin-bottom: 12px;
+    }
+
+    .chat-msg {
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 10px;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .chat-msg .author {
+      font-weight: 600;
+      color: #6366f1;
+      margin-right: 6px;
+    }
+
+    .chat-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .chat-inputs input {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 0.8rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .chat-inputs button {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border: none;
+      border-radius: 8px;
+      padding: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -168,15 +228,14 @@
   </button>
 
   <audio id="bgMusic" loop>
-    <!-- Ваша ссылка на музыку останется здесь -->
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-piano-amp-strings-10711.mp3" type="audio/mpeg">
+    <source src="https://mp3tourl.com/audio/1791550200566-a0a4e73c-24c7-4209-a812-b6cb3fa5af61.m4a" type="audio/mpeg">
   </audio>
 
   <div class="container">
     <div class="loader"></div>
     <div class="book-title">«Собрать по частям» — Andersen</div>
     <h1>Технические работы</h1>
-    <p>Сайт книги находится в процессе настройки. Общайтесь в чате ниже, пока идет отсчет!</p>
+    <p>Сайт книги находится в процессе настройки. Делитесь ожиданиями в чате ниже!</p>
 
     <div class="timer">
       <div class="timer-block"><span class="timer-val" id="days">00</span><span class="timer-lbl">Дней</span></div>
@@ -184,16 +243,25 @@
       <div class="timer-block"><span class="timer-val" id="minutes">00</span><span class="timer-lbl">Мин</span></div>
       <div class="timer-block"><span class="timer-val" id="seconds">00</span><span class="timer-lbl">Сек</span></div>
     </div>
+
+    <!-- Встроенный чат -->
+    <div class="chat-box">
+      <div class="chat-title">💬 Чат ожидания</div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg"><span class="author">Andersen:</span>Добро пожаловать! Скоро здесь появятся новые главы.</div>
+      </div>
+      <div class="chat-inputs">
+        <input type="text" id="usernameInput" placeholder="Ваше имя / ник" value="Читатель">
+        <div style="display:flex; gap:6px;">
+          <input type="text" id="messageInput" placeholder="Напишите сообщение..." style="flex:1;">
+          <button onclick="sendMessage()">Отправить</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Подключение онлайн-чата Chatbro -->
-  <script id="chatBroEmbedCode">
-    /* Chatbro Widget Embed Code */
-    function ChatbroLoader(chats,src){var ii=chats.length;if (ii) {var c=chats[ii-1];c.id=src;c.container=c.container||'chatbro_container';var el=document.createElement('script');el.type='text/javascript';el.async=true;el.src='https://www.chatbro.com/embed.js';var ss=document.getElementsByTagName('script')[0];ss.parentNode.insertBefore(el,ss);}}
-    ChatbroLoader([], 'chatbro_code');
-  </script>
-
   <script>
+    // Таймер
     const targetDate = new Date("2026-10-15T18:00:00").getTime();
 
     function updateTimer() {
@@ -201,7 +269,7 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        document.querySelector('.timer').innerHTML = "<b style='color:#a855f7;'>Технические работы завершены!</b>";
+        document.querySelector('.timer').innerHTML = "<b style='color:#a855f7;'>Работы завершены!</b>";
         return;
       }
 
@@ -219,6 +287,7 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
+    // Музыка
     const music = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
 
@@ -229,6 +298,25 @@
       } else {
         music.pause();
         btn.innerText = "🎵 Включить музыку";
+      }
+    }
+
+    // Отправка сообщений в чат
+    function sendMessage() {
+      const nameInput = document.getElementById('usernameInput');
+      const msgInput = document.getElementById('messageInput');
+      const chatBox = document.getElementById('chatMessages');
+
+      const name = nameInput.value.trim() || 'Аноним';
+      const text = msgInput.value.trim();
+
+      if (text !== "") {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'chat-msg';
+        msgDiv.innerHTML = `<span class="author">${name}:</span>${text}`;
+        chatBox.appendChild(msgDiv);
+        msgInput.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
       }
     }
   </script>
